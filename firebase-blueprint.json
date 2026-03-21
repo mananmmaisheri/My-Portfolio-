@@ -1,0 +1,74 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "photoURL": { "type": "string", "format": "uri" },
+        "role": { "type": "string", "enum": ["admin", "user"] }
+      },
+      "required": ["displayName", "email", "role"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "A portfolio project",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "tech": { "type": "array", "items": { "type": "string" } },
+        "image": { "type": "string" },
+        "github": { "type": "string" },
+        "demo": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["title", "description", "tech"]
+    },
+    "BlogPost": {
+      "title": "Blog Post",
+      "description": "A blog post article",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "date": { "type": "string", "format": "date-time" },
+        "slug": { "type": "string" }
+      },
+      "required": ["title", "content", "slug"]
+    },
+    "Message": {
+      "title": "Contact Message",
+      "description": "A message from the contact form",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "message"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile documents"
+    },
+    "/projects": {
+      "schema": "Project",
+      "description": "Collection of portfolio projects"
+    },
+    "/blog_posts": {
+      "schema": "BlogPost",
+      "description": "Collection of blog posts"
+    },
+    "/messages": {
+      "schema": "Message",
+      "description": "Collection of contact form messages"
+    }
+  }
+}

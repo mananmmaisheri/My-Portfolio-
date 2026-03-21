@@ -1,0 +1,9 @@
+{
+  "name": "MananCodes Portfolio",
+  "description": "A premium, cinematic developer portfolio for Manan. Features advanced GSAP scroll animations, Lenis smooth scroll, animated backgrounds, and a PostgreSQL-backed blog and contact system.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

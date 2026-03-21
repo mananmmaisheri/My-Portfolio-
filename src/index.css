@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-night: #000F08;
+  --color-imperial: #FB3640;
+}
+
+@layer base {
+  body {
+    @apply bg-night text-white font-sans antialiased overflow-x-hidden;
+    background: radial-gradient(circle at 50% 50%, #001a0e 0%, #000F08 100%);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tighter font-black uppercase;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px rgba(251, 54, 64, 0.5), 0 0 20px rgba(251, 54, 64, 0.3);
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-2xl border border-white/10;
+  }
+
+  .imperial-glow {
+    box-shadow: 0 0 30px rgba(251, 54, 64, 0.15);
+  }
+
+  .mask-radial {
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000F08;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FB3640;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4d58;
+}
+
+/* Neural Grid Animation */
+.neural-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(251, 54, 64, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 54, 64, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(circle at center, black, transparent 90%);
+  animation: grid-move 60s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(80px); }
+}
+
+/* Marquee Effect for Buttons */
+.marquee-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(251, 54, 64, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.marquee-btn:hover::before {
+  left: 100%;
+}
+
+/* Page Transition Overlay */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #FB3640;
+  z-index: 9999;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+/* Split Text Animation Classes */
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  filter: blur(10px);
+}
