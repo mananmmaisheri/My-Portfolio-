@@ -9,38 +9,75 @@ gsap.registerPlugin(ScrollTrigger);
 const journeyData = [
   {
     year: '2026',
-    title: 'AI Exploration',
-    description: 'Deep diving into Artificial Intelligence, LLMs, and building intelligent agents that solve complex problems.',
+    title: 'Data Science',
+    description: 'Learning Data Science from Code with Harry, mastering data manipulation, visualization, and statistical analysis.',
+    icon: Award,
+    color: '#FB3640',
+    progress: 40,
+  },
+  {
+    year: '2026',
+    title: 'AIML Mastery',
+    description: 'Deep diving into Artificial Intelligence and Machine Learning through the DeepLearning.AI specialization.',
     icon: Rocket,
     color: '#FB3640',
+    progress: 30,
+  },
+  {
+    year: '2026',
+    title: 'Advanced Python',
+    description: 'Almost completed advanced Python concepts, including decorators, generators, and asynchronous programming.',
+    icon: Code,
+    color: '#FB3640',
+    progress: 90,
+  },
+  {
+    year: '2026',
+    title: 'DSA (JAVA)',
+    description: 'Mastering Data Structures and Algorithms using Java to build a strong foundation for problem-solving.',
+    icon: GraduationCap,
+    color: '#FB3640',
+    progress: 25,
+  },
+  {
+    year: '2026',
+    title: 'AI Exploration',
+    description: 'Exploring the vast landscape of AI, from prompt engineering to building intelligent agents.',
+    icon: Rocket,
+    color: '#FB3640',
+    progress: 50,
   },
   {
     year: '2025',
-    title: 'Data Structures',
-    description: 'Mastering the foundations of efficient software through advanced data structures and algorithmic problem solving.',
+    title: 'Internship in AI',
+    description: 'Gained hands-on experience with AI projects. Developed "AI Study Pal", an AI Para Summarizer, and an intelligent test generator.',
     icon: Award,
     color: '#FB3640',
+    progress: 100,
+  },
+  {
+    year: '2025',
+    title: 'Python Fundamentals',
+    description: 'Completed 100% of Python programming fundamentals, building a solid base for backend development.',
+    icon: Code,
+    color: '#FB3640',
+    progress: 100,
+  },
+  {
+    year: '2025',
+    title: 'C & C++ Programming',
+    description: 'Mastered the fundamentals of C and C++ programming from Code with Harry, focusing on memory management and performance.',
+    icon: GraduationCap,
+    color: '#FB3640',
+    progress: 100,
   },
   {
     year: '2024',
-    title: 'C Programming',
-    description: 'Exploring low-level systems programming and understanding how software interacts with hardware.',
-    icon: Code,
-    color: '#FB3640',
-  },
-  {
-    year: '2023',
-    title: 'Python Development',
-    description: 'Learning Python for automation, data analysis, and building robust backend systems.',
-    icon: GraduationCap,
-    color: '#FB3640',
-  },
-  {
-    year: '2022',
     title: 'Web Development',
-    description: 'Started my journey with HTML, CSS, and JavaScript, building my first interactive websites.',
+    description: 'Started my journey with Web Development, learning HTML, CSS, and JavaScript to build interactive digital experiences.',
     icon: Calendar,
     color: '#FB3640',
+    progress: 100,
   },
 ];
 
@@ -124,9 +161,25 @@ export default function Journey() {
                     <h4 className="text-3xl md:text-4xl font-black mb-6 group-hover:text-imperial transition-colors">
                       {item.title}
                     </h4>
-                    <p className="text-lg text-white/50 leading-relaxed font-light">
+                    <p className="text-lg text-white/50 leading-relaxed font-light mb-8">
                       {item.description}
                     </p>
+
+                    {/* Progress Bar */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-xs font-mono text-white/30 uppercase tracking-widest">
+                        <span>Progress</span>
+                        <span>{item.progress}%</span>
+                      </div>
+                      <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${item.progress}%` }}
+                          transition={{ duration: 1.5, ease: "easeOut" }}
+                          className="h-full bg-imperial shadow-[0_0_10px_#FB3640]"
+                        />
+                      </div>
+                    </div>
 
                     {/* Glowing Accent */}
                     <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-imperial/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

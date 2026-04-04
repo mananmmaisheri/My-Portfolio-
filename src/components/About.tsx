@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MapPin, Mail, ExternalLink } from 'lucide-react';
+import { MapPin, Mail } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,18 +24,9 @@ const storyBlocks = [
   },
 ];
 
-const techStack = [
-  { name: 'JavaScript', logo: 'https://cdn.simpleicons.org/javascript' },
-  { name: 'React', logo: 'https://cdn.simpleicons.org/react' },
-  { name: 'Next.js', logo: 'https://cdn.simpleicons.org/nextdotjs/white' },
-  { name: 'Python', logo: 'https://cdn.simpleicons.org/python' },
-  { name: 'C Programming', logo: 'https://cdn.simpleicons.org/c' },
-  { name: 'Node.js', logo: 'https://cdn.simpleicons.org/nodedotjs' },
-  { name: 'Git', logo: 'https://cdn.simpleicons.org/git' },
-  { name: 'AI Tools', logo: 'https://cdn.simpleicons.org/openai/white' },
-  { name: 'Tailwind', logo: 'https://cdn.simpleicons.org/tailwindcss' },
-  { name: 'Prisma', logo: 'https://cdn.simpleicons.org/prisma/white' },
-];
+import { techStack } from '../constants';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -45,14 +36,14 @@ export default function About() {
     offset: ["start start", "end end"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.05, 0.1, 0.15], [1, 1, 0.5, 0]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.utils.toArray('.story-block').forEach((block: any) => {
         gsap.fromTo(block, 
-          { opacity: 0, y: 100, filter: 'blur(20px)' },
+          { opacity: 0, y: 100, filter: 'blur(10px)' },
           {
             opacity: 1,
             y: 0,
@@ -62,8 +53,7 @@ export default function About() {
             scrollTrigger: {
               trigger: block,
               start: 'top 80%',
-              end: 'bottom 20%',
-              toggleActions: 'play reverse play reverse',
+              toggleActions: 'play none none reverse',
             }
           }
         );
@@ -82,25 +72,15 @@ export default function About() {
           }
         }
       );
-
-      // Tech Stack Animation
-      if (techRef.current) {
-        gsap.to('.tech-logo-track', {
-          xPercent: -50,
-          ease: 'none',
-          duration: 20,
-          repeat: -1,
-        });
-      }
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={containerRef} className="relative min-h-[450vh] py-32 px-6 overflow-hidden">
+    <div ref={containerRef} className="relative min-h-[200vh] py-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-32 text-center">
+        <div className="sticky top-0 h-screen flex flex-col items-center justify-center pointer-events-none">
           <motion.h2 
             style={{ scale, opacity }}
             className="text-7xl md:text-9xl font-black tracking-tighter text-glow"
@@ -108,7 +88,10 @@ export default function About() {
             STORYTELLING.
           </motion.h2>
           
-          <div className="mt-12 flex flex-wrap justify-center gap-8 text-white/50 font-mono text-sm uppercase tracking-widest">
+          <motion.div 
+            style={{ opacity }}
+            className="mt-12 flex flex-wrap justify-center gap-8 text-white/50 font-mono text-sm uppercase tracking-widest"
+          >
             <div className="flex items-center gap-2">
               <MapPin size={16} className="text-imperial" />
               Mumbai, India
@@ -117,16 +100,16 @@ export default function About() {
               <Mail size={16} className="text-imperial" />
               contact@manancodes.com
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="space-y-64">
+        <div className="relative z-10 space-y-24 mt-[15vh]">
           {storyBlocks.map((block, i) => (
             <div 
               key={i} 
               className={`story-block flex flex-col ${block.align === 'right' ? 'md:items-end' : 'md:items-start'}`}
             >
-              <div className={`max-w-2xl ${block.align === 'right' ? 'text-right' : 'text-left'}`}>
+              <div className={`max-w-2xl ${block.align === 'right' ? 'text-right' : 'text-left'} glass-card p-12 rounded-[3rem]`}>
                 <h3 className="text-4xl md:text-6xl font-black mb-8 text-imperial">
                   {block.title}
                 </h3>
@@ -139,10 +122,10 @@ export default function About() {
         </div>
 
         {/* Tech Stack Section */}
-        <div ref={techRef} className="mt-64 relative overflow-hidden py-20">
+        <div ref={techRef} className="mt-20 relative overflow-hidden py-20">
           <h3 className="text-4xl md:text-6xl font-black mb-20 text-center">TECH STACK.</h3>
-          <div className="tech-logo-track flex gap-20 whitespace-nowrap w-fit">
-            {[...techStack, ...techStack].map((tech, i) => (
+          <div className="flex gap-20 whitespace-nowrap w-fit animate-marquee">
+            {[...techStack, ...techStack, ...techStack].map((tech, i) => (
               <div key={i} className="flex flex-col items-center gap-4 group">
                 <div className="w-24 h-24 md:w-32 md:h-32 glass-card rounded-3xl flex items-center justify-center p-6 transition-all group-hover:border-imperial group-hover:shadow-[0_0_30px_rgba(251,54,64,0.2)] group-hover:scale-110">
                   <img src={tech.logo} alt={tech.name} className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all" />
@@ -154,28 +137,20 @@ export default function About() {
         </div>
 
         {/* Animated Divider */}
-        <div className="mt-64 relative h-px w-full bg-white/10 overflow-hidden">
+        <div className="mt-20 relative h-px w-full bg-white/10 overflow-hidden">
           <div className="divider-line absolute inset-0 bg-imperial shadow-[0_0_10px_#FB3640] origin-left" />
         </div>
 
         {/* Parallax Image Section */}
-        <div className="mt-64 relative h-screen rounded-[4rem] overflow-hidden glass-card">
+        <div className="mt-20 relative h-[60vh] rounded-[4rem] overflow-hidden glass-card">
           <motion.div 
             style={{ scale: 1.1 }}
             className="absolute inset-0 bg-[url('https://picsum.photos/seed/tech/1920/1080')] bg-cover bg-center opacity-30 grayscale hover:grayscale-0 transition-all duration-1000"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-            <h4 className="text-5xl md:text-8xl font-black text-center mb-12">
+            <h4 className="text-5xl md:text-8xl font-black text-center">
               BUILDING THE <span className="text-imperial italic">FUTURE</span>.
             </h4>
-            <a 
-              href="https://manancodes.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-8 py-4 glass-card rounded-full text-sm font-black uppercase tracking-[0.3em] hover:bg-imperial hover:text-white transition-all group"
-            >
-              VISIT MAIN SITE <ExternalLink size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </a>
           </div>
         </div>
       </div>

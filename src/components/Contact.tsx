@@ -12,18 +12,25 @@ export default function Contact() {
     setFormState('submitting');
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: "f76b5ca1-69ab-4f4c-86cd-e8f3aea45797",
+          ...formData,
+          subject: `New Contact Form Submission from ${formData.name}`,
+          from_name: "Portfolio Contact Form",
+        }),
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (data.success) {
         setFormState('success');
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setFormState('idle'), 5000);
       } else {
-        throw new Error('Failed to submit');
+        throw new Error(data.message || 'Failed to submit');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
