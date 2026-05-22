@@ -10,9 +10,10 @@ export interface BlogPost {
   coverImage: string;
   content: string | React.ReactNode;
   slug: string;
+  pinned?: boolean;
 }
 
-export const blogs: BlogPost[] = [
+const rawBlogs: BlogPost[] = [
   {
     id: 'history-of-programming',
     slug: 'history-of-programming',
@@ -620,5 +621,464 @@ Improving problem-solving and debugging skills
 
 Final Thoughts
 Web development best practices are not rules—they’re habits. Following them helps you build applications that are fast, secure, scalable, and enjoyable to use.`
+  },
+  {
+    id: 'python-for-ai-data-science',
+    slug: 'python-for-ai-data-science',
+    title: 'Why Python Dominates AI & Data Science (And Why You Should Love It Too)',
+    description: 'An ultimate guide to mastering Python, the undisputed champion of AI, machine learning, and modern intelligence.',
+    date: '2026-05-22',
+    category: 'Python & AI',
+    color: 'from-green-500 to-teal-500',
+    coverImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&h=600&fit=crop',
+    pinned: true,
+    content: (
+      <div className="space-y-16 text-gray-300 leading-relaxed">
+        <section className="space-y-4">
+          <h1 className="text-4xl md:text-5xl font-black text-white leading-tight"> Why Python Dominates AI & Data Science (And Why You Should Love It Too) </h1>
+          <p className="text-xl text-white/70 italic">An Ultimate High-Octane Technical Guide for Learners, Builders, and AI Explorers in 2026.</p>
+        </section>
+        <hr className="border-gray-800" />
+
+        {/* Introduction */}
+        <section className="space-y-6">
+          <p className="text-lg">
+            If you're curious about AI, machine learning, or data science in 2026, there is no escaping Python.
+            It's the undisputed champion of AI/ML, and for good reason: <strong>Python dominates AI/ML due to its ecosystem and ease of use</strong>.
+            As someone who absolutely loves Python (it is hands-down my favorite programming language!), I'm here to tell you that Python isn't just powerful—it's actually <strong>incredibly fun to learn</strong>.
+          </p>
+          <p className="text-lg">
+            Too often, programming is taught as a dry list of loops, variables, and semi-colons. But with Python, coding becomes an interactive journey where ideas rapidly turn into functional prototypes. When you look under the hood of modern AI tools like ChatGPT, neural voice synthesizers, or predictive analysis systems, Python is the glue holding it all together. Let’s dive straight into why Python rules AI, why it provides supreme developer satisfaction, how to navigate your learning journey, and real-world projects you can build right now.
+          </p>
+        </section>
+
+        {/* Why Python Rules AI & DS */}
+        <section className="space-y-6">
+          <h2 className="text-3xl font-black text-white hover:text-imperial transition-colors">🚀 Why Python Rules AI & Data Science</h2>
+          <p>
+            Why did a language designed in 1991 by Guido van Rossum as a hobby project become the backbone of modern artificial intelligence? The answer lies in the unique convergence of an unmatched ecosystem, developer productivity, and massive community-led investment.
+          </p>
+
+          <h3 className="text-2xl font-bold text-white mt-8">📦 The Ecosystem Advantage</h3>
+          <p>
+            Python's biggest strength is its <strong>massive, pre-compiled library ecosystem</strong>. You don’t need to spend months implementing matrix multiplication, building deep neural networks from scratch, or scraping raw text. Instead, you import specialized tools and focus strictly on solving problems.
+          </p>
+
+          <div className="overflow-x-auto rounded-2xl border border-white/10 my-8">
+            <table className="w-full text-left border-collapse bg-white/5">
+              <thead>
+                <tr className="border-b border-white/10 bg-white/10 font-mono text-xs uppercase tracking-wider text-imperial">
+                  <th className="p-4 font-bold">Domain</th>
+                  <th className="p-4 font-bold">Key Libraries</th>
+                  <th className="p-4 font-bold">What It Handles</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 text-sm">
+                <tr>
+                  <td className="p-4 font-bold text-white">Machine Learning</td>
+                  <td className="p-4 font-mono text-green-400">scikit-learn, XGBoost, LightGBM</td>
+                  <td className="p-4">Classic predictive modeling, decision trees, regression, classification</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Deep Learning</td>
+                  <td className="p-4 font-mono text-green-400">PyTorch, TensorFlow, Keras</td>
+                  <td className="p-4">Building multi-layer artificial neural networks, custom model architectures</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Data Manipulation</td>
+                  <td className="p-4 font-mono text-green-400">pandas, NumPy, Polars</td>
+                  <td className="p-4">Fast matrix mathematics, reading/writing databases & CSVs, table cleaning</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Data Visualization</td>
+                  <td className="p-4 font-mono text-green-400">matplotlib, seaborn, plotly</td>
+                  <td className="p-4">Interactive charts, graphical statistics, scatterplots, geospatial maps</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">AI / LLM Agents</td>
+                  <td className="p-4 font-mono text-green-400">LangChain, LlamaIndex, HF Transformers</td>
+                  <td className="p-4">Integrating large language models, connecting data sources to custom AI chatbot models</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-2xl font-bold text-white mt-8">📖 Readability = High Productivity</h3>
+          <p>
+            Python reads almost like plain English. The syntax is designed to express concepts clearly in fewer lines of code than C++, Java, or Rust. This matters because AI and Data Science are fundamentally experimental fields. You'll spend 90% of your time brainstorming, clean-tuning features, and modifying parameters. High readability significantly lowers cognitive fatigue, accelerating your development cycles.
+          </p>
+
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 font-mono text-xs text-white overflow-x-auto">
+            <p className="text-white/50 mb-4"># Real Python Code to Analyze Dataset Columns & Output Means</p>
+            <p className="text-teal-400">import <span className="text-white">pandas</span> as <span className="text-white">pd</span></p>
+            <p className="text-teal-400">import <span className="text-white">numpy</span> as <span className="text-white">np</span></p>
+            <br />
+            <p>data = pd.read_csv(<span className="text-green-300">'sales_records.csv'</span>)</p>
+            <p>average_revenue = data[<span className="text-green-300">'revenue'</span>].mean()</p>
+            <p>print(<span className="text-green-300">{"f\"Average Revenue calculated: ${average_revenue:,.2f}\""}</span>)</p>
+          </div>
+
+          <p className="mt-4">
+            Notice how there are no complex braces, namespaces, or public class setups. Just immediate, clean, logical code execution.
+          </p>
+
+          <h3 className="text-2xl font-bold text-white mt-8">🌎 Global Community Support</h3>
+          <p>
+            Python benefits from a compounding network effect. Because it holds a virtual monopoly in AI research, almost every state-of-the-art paper (including those released by OpenAI, Hugging Face, or Google Research) uses Python for their reference implementations. This means as a developer, you inherit an exhaustive reserve of answers on StackOverflow, active GitHub discussions, and structured tutorials.
+          </p>
+        </section>
+        <hr className="border-gray-800" />
+
+        {/* Why Python is Fun to Learn */}
+        <section className="space-y-6">
+          <h2 className="text-3xl font-black text-white hover:text-imperial transition-colors">🧠 Why Python is Actually Fun to Learn</h2>
+          <p>
+            Let's move away from scientific reasons and talk about passion. Python is an incredibly fun language to write, and that is vital when you are starting. If a language feels frustrating and full of rigid syntax errors, you're more likely to quit.
+          </p>
+          <div className="grid md:grid-cols-2 gap-8 my-8">
+            <div className="bg-white/5 border border-white/5 p-8 rounded-3xl space-y-4">
+              <span className="text-3xl">✨</span>
+              <h4 className="text-xl font-bold text-white">Instant Gratification</h4>
+              <p className="text-sm text-white/60">
+                You write a script and it instantly executes. There is no heavy building, linking, or compilation phases. It lets you test hypotheses immediately.
+              </p>
+            </div>
+            <div className="bg-white/5 border border-white/5 p-8 rounded-3xl space-y-4">
+              <span className="text-3xl">📖</span>
+              <h4 className="text-xl font-bold text-white">Interactive Jupyter Notebooks</h4>
+              <p className="text-sm text-white/60">
+                You can run code cell-by-cell inside a browser. Watch charts update in real-time right alongside your equations. It's coding made tactile.
+              </p>
+            </div>
+            <div className="bg-white/5 border border-white/5 p-8 rounded-3xl space-y-4">
+              <span className="text-3xl">🧩</span>
+              <h4 className="text-xl font-bold text-white">Forgiving Syntax</h4>
+              <p className="text-sm text-white/60">
+                Python gets out of your way. Free from semicolons and curly brace overheads, the structure relies naturally on indentation. It feels clean and aesthetic.
+              </p>
+            </div>
+            <div className="bg-white/5 border border-white/5 p-8 rounded-3xl space-y-4">
+              <span className="text-3xl">🛠️</span>
+              <h4 className="text-xl font-bold text-white">Extremely Helpful Errors</h4>
+              <p className="text-sm text-white/60">
+                Unlike some lower-level compiled languages that throw confusing assembler memory dumps, Python's terminal logs are readable, pinpointing exact lines and issues.
+              </p>
+            </div>
+          </div>
+          <p>
+            When I write in Python, it feels like composing a logical blueprint. It rewards creativity, allowing me to build robust scrapers, local databases, or conversational AI models with a single weekend of coding.
+          </p>
+        </section>
+        <hr className="border-gray-800" />
+
+        {/* What to Learn - The Right Path */}
+        <section className="space-y-6">
+          <h2 className="text-3xl font-black text-white hover:text-imperial transition-colors">🧭 What to Learn (The 4-Phase Learning Path)</h2>
+          <p>
+            The biggest mistake beginners make is attempting to learn everything at once. They download 20GB models on Day 1 and burn out when they hit CUDA errors. To be successful, you must scale up incrementally.
+          </p>
+
+          <h3 className="text-2xl font-bold text-white mt-8">📅 Chronological Learning Path</h3>
+          <div className="overflow-x-auto rounded-2xl border border-white/10 my-8">
+            <table className="w-full text-left border-collapse bg-white/5">
+              <thead>
+                <tr className="border-b border-white/10 bg-white/10 font-mono text-xs uppercase tracking-wider text-imperial">
+                  <th className="p-4 font-bold">Phase</th>
+                  <th className="p-4 font-bold">Timeline</th>
+                  <th className="p-4 font-bold">Focus Skills</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 text-sm">
+                <tr>
+                  <td className="p-4 font-bold text-white">Phase 1: Python Basics</td>
+                  <td className="p-4 font-mono text-green-400">2–4 Weeks</td>
+                  <td className="p-4">Variables, core structures (lists, dictionaries, sets), conditionals, loops, custom function creation, and basic file read/write (I/O).</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Phase 2: Data DS Essentials</td>
+                  <td className="p-4 font-mono text-green-400">3–6 Weeks</td>
+                  <td className="p-4">Mastering math-focused tools: NumPy arrays, pandas dataframes, plotting custom charts with seaborn, and learning using Jupyter environments.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Phase 3: Machine Learning</td>
+                  <td className="p-4 font-mono text-green-400">4–8 Weeks</td>
+                  <td className="p-4">Understanding data pre-processing, utilizing scikit-learn models, training estimators, fitting models, and analyzing classification performance.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Phase 4: Deep Learning & AI</td>
+                  <td className="p-4 font-mono text-green-400">6–12 Weeks</td>
+                  <td className="p-4">PyTorch neural architectures, deploying transformer models from Hugging Face, custom training, and configuring retrieval-augmented generation (RAG) with LangChain.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-2xl font-bold text-white mt-8">📊 Deep Dive: Data Science Essentials (Phase 2 Library Breakdown)</h3>
+          <p>
+            When entering Phase 2, these are the four major libraries you will be working with daily. Spend time exploring their syntax, as they form the bridge for all mathematical calculations.
+          </p>
+
+          <div className="overflow-x-auto rounded-2xl border border-white/10 my-8">
+            <table className="w-full text-left border-collapse bg-white/5">
+              <thead>
+                <tr className="border-b border-white/10 bg-white/10 font-mono text-xs uppercase tracking-wider text-imperial">
+                  <th className="p-4 font-bold">Library</th>
+                  <th className="p-4 font-bold">Main Responsibility</th>
+                  <th className="p-4 font-bold">Why It Is Essential</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 text-sm">
+                <tr>
+                  <td className="p-4 font-bold text-white">NumPy</td>
+                  <td className="p-4">Vectorized math and matrix equations</td>
+                  <td className="p-4">Built in C and Fortran for extremely fast performance, avoiding Python’s dynamic type latency.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">pandas</td>
+                  <td className="p-4">Data management, exploration & tabular tables</td>
+                  <td className="p-4">Allows reading CSVs, SQL queries, and spreadsheets, providing high-powered merge, group-by, and pivot features.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">matplotlib / seaborn</td>
+                  <td className="p-4">Data plotting, charts, graphs, and export</td>
+                  <td className="p-4">Converts raw numeric arrays into descriptive box plots, correlation heatmaps, or responsive line structures.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Jupyter Notebooks</td>
+                  <td className="p-4">Tactile workspace execution</td>
+                  <td className="p-4">Perfect for experimenting step-by-step without re-running long data parsing algorithms every time you fix a small bug.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <hr className="border-gray-800" />
+
+        {/* What NOT to Learn */}
+        <section className="space-y-6">
+          <h2 className="text-3xl font-black text-white hover:text-imperial transition-colors">⚠️ What NOT to Learn (Yet)</h2>
+          <p>
+            One of the secret superpowers of experienced engineers is knowing what details to ignore. The sheer volume of technical topics can easily overwhelm beginners. When learning Python for AI, you must bypass topics designed for general backend architecture or language compiler researchers.
+          </p>
+
+          <div className="overflow-x-auto rounded-2xl border border-white/10 my-8">
+            <table className="w-full text-left border-collapse bg-white/5">
+              <thead>
+                <tr className="border-b border-white/10 bg-white/10 font-mono text-xs uppercase tracking-wider text-imperial">
+                  <th className="p-4 font-bold">Topic to Skip</th>
+                  <th className="p-4 font-bold">What It Is</th>
+                  <th className="p-4 font-bold">Why Bypassing Is Safe (Early On)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 text-sm">
+                <tr>
+                  <td className="p-4 font-bold text-white">Python Metaclasses</td>
+                  <td className="p-4">Languages constructs that modify classes at run-time</td>
+                  <td className="p-4">Used mostly inside framework developments (Django, Pydantic). AI engineers use standard methods.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">CPython Internals & GIL</td>
+                  <td className="p-4">How CPython manages thread locks</td>
+                  <td className="p-4">Unless optimizing execution engines at Google, modern libraries completely scale multi-threading behind the scenes.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Complex Custom Decorators</td>
+                  <td className="p-4">Wrapping functions in nested helper methods</td>
+                  <td className="p-4">Understanding basic preset decorators (@property, @staticmethod) is fine; writing meta-decorators is unnecessary.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Memory Profiling / Optimization</td>
+                  <td className="p-4">Tracking low-level byte usage</td>
+                  <td className="p-4">Highly scaled modern tools (Polars, pandas) compile natively for you. Focus purely on code clarity.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <hr className="border-gray-800" />
+
+        {/* Project Ideas to Build Your Skills */}
+        <section className="space-y-12">
+          <h2 className="text-3xl font-black text-white hover:text-imperial transition-colors">🛠️ Project Ideas to Build Your Skills</h2>
+          <p>
+            You only truly internalize programming concepts when your hands are on the keyboard, debugging real errors, and checking logic results. Here is an incremental roadmap of projects designed to build your skills.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Beginner */}
+            <div className="bg-white/5 border border-white/15 p-8 rounded-3xl space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]" />
+                <h4 className="text-xl font-bold text-white">🟢 Beginner (1-3 Days)</h4>
+              </div>
+              <ul className="space-y-4 text-sm text-white/75 font-light">
+                <li>
+                  <strong className="text-white">1. CSV Sales Analyzer:</strong><br />
+                  Load a customer transaction raw log and print general statistics with clean summaries.
+                </li>
+                <li>
+                  <strong className="text-white">2. Movie Match Predictor:</strong><br />
+                  A lightweight model predicting if a user will like a title based on category scores.
+                </li>
+                <li>
+                  <strong className="text-white">3. API Scraper:</strong><br />
+                  Fetch real-time currency conversion rates using requests and format beautiful outputs.
+                </li>
+                <li>
+                  <strong className="text-white">4. Data Visualization Card:</strong><br />
+                  Plot beautiful population density lines from official datasets.
+                </li>
+                <li>
+                  <strong className="text-white">5. Interactive CLI Quiz:</strong><br />
+                  A game built with state controls, score metrics, and automated feedback.
+                </li>
+              </ul>
+            </div>
+
+            {/* Intermediate */}
+            <div className="bg-white/5 border border-white/15 p-8 rounded-3xl space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full bg-yellow-500 shadow-[0_0_10px_#eab308]" />
+                <h4 className="text-xl font-bold text-white">🟡 Intermediate (1-2 Weeks)</h4>
+              </div>
+              <ul className="space-y-4 text-sm text-white/75 font-light">
+                <li>
+                  <strong className="text-white">1. End-To-End ML Pipeline:</strong><br />
+                  Handle messy input, normalize numeric scales, train an estimator, and export.
+                </li>
+                <li>
+                  <strong className="text-white">2. Content Recommendation engine:</strong><br />
+                  A cosine similarity algorithm ranking blog content based on metadata overlap.
+                </li>
+                <li>
+                  <strong className="text-white">3. Sentiment Tracker:</strong><br />
+                  Analyze user feedback and output polarity maps.
+                </li>
+                <li>
+                  <strong className="text-white">4. Image Classifier:</strong><br />
+                  Extract image vectors using pre-trained convolutional backbones via Hugging Face.
+                </li>
+                <li>
+                  <strong className="text-white">5. FastAPI Model Server:</strong><br />
+                  Host a machine learning module behind a high-efficiency secure API endpoint.
+                </li>
+              </ul>
+            </div>
+
+            {/* Advanced */}
+            <div className="bg-white/5 border border-white/15 p-8 rounded-3xl space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_10px_#ef4444]" />
+                <h4 className="text-xl font-bold text-white">🔴 Advanced (1+ Months)</h4>
+              </div>
+              <ul className="space-y-4 text-sm text-white/75 font-light">
+                <li>
+                  <strong className="text-white">1. RAG AI Assistant:</strong><br />
+                  Build an interactive model utilizing LlamaIndex to query complex engineering files.
+                </li>
+                <li>
+                  <strong className="text-white">2. Resume Analyzer App:</strong><br />
+                  Full-stack portal summarizing resumes and ranking matches.
+                </li>
+                <li>
+                  <strong className="text-white">3. Edge Computer Vision System:</strong><br />
+                  Use OpenCV to track motion thresholds and capture image logs.
+                </li>
+                <li>
+                  <strong className="text-white">4. Time-Series Stock Predictor:</strong><br />
+                  Build a model utilizing LSTM or transformers to forecast trends.
+                </li>
+                <li>
+                  <strong className="text-white">5. Open Source Collaborator:</strong><br />
+                  Write code optimizations, add test coverages, or improve major project libraries.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <hr className="border-gray-800" />
+
+        {/* 7-Day Start Plan */}
+        <section className="space-y-6">
+          <h2 className="text-3xl font-black text-white hover:text-imperial transition-colors">🔥 Quick Start: Your First Week Roadmap</h2>
+          <p>
+            The best way to start is to get your hands dirty. Commit just 45 minutes a day for the next 7 days, and you will be amazed at what you can achieve.
+          </p>
+
+          <div className="overflow-x-auto rounded-2xl border border-white/10 my-8">
+            <table className="w-full text-left border-collapse bg-white/5">
+              <thead>
+                <tr className="border-b border-white/10 bg-white/10 font-mono text-xs uppercase tracking-wider text-imperial">
+                  <th className="p-4 font-bold">Day</th>
+                  <th className="p-4 font-bold">Planned Activity</th>
+                  <th className="p-4 font-bold">Expected Output</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 text-sm">
+                <tr>
+                  <td className="p-4 font-bold text-white">Day 1</td>
+                  <td className="p-4">Install Anaconda (or Python + VS Code), write "Hello, World!" in console.</td>
+                  <td className="p-4">A fully structured development environment ready for action.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Day 2</td>
+                  <td className="p-4">Learn basic math operators, string formatting, variables, and list indexing.</td>
+                  <td className="p-4">Comfort reading variables and manipulating string arrays in terminal.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Day 3</td>
+                  <td className="p-4">Write custom functions containing "for" loops and conditional branching.</td>
+                  <td className="p-4">Build and execute an interactive basic console calculator.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Day 4</td>
+                  <td className="p-4">Install pandas via pip. Load a public CSV file and view descriptive parameters.</td>
+                  <td className="p-4">Read real spreadsheet tables from code instead of Excel UI.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Day 5</td>
+                  <td className="p-4">Import matplotlib. Plot column values from your loaded dataset dynamically.</td>
+                  <td className="p-4">Output your first line charts, saved directly to a PNG.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Day 6</td>
+                  <td className="p-4">Combine columns, filter outliers, write clean outputs inside Jupyter cell panels.</td>
+                  <td className="p-4">Complete your first standalone Data Analysis report.</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-bold text-white">Day 7</td>
+                  <td className="p-4">Create a git repository, commit your directory, and publish to GitHub.</td>
+                  <td className="p-4">A public portfolio piece showcasing code to developers globally!</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <hr className="border-gray-800" />
+
+        {/* Conclusion */}
+        <section className="space-y-6">
+          <h2 className="text-3xl font-black text-white hover:text-imperial transition-colors">🏁 Final Thoughts: Your AI Odyssey Begins Today</h2>
+          <blockquote className="border-l-4 border-imperial pl-6 italic text-xl my-8 text-white/80">
+            "Python is the only language where you can write production-grade AI code that looks like pseudocode."
+          </blockquote>
+          <p>
+            Python is much more than a trending industry standard—it is an incredible ecosystem designed to empower human logic. It helps you bypass repetitive boilerplate details so you can focus strictly on designing intelligent solutions.
+          </p>
+          <p>
+            If you've been putting off learning programming or AI, make Python your gateway. It's beautiful to read, modular to write, and incredibly exciting to master. Let your curiosity lead the way, code consistently every day, and build things that stimulate your passion. Your AI journey starts right now. 🐍🚀
+          </p>
+          <p className="text-imperial font-mono text-sm tracking-wider uppercase pt-6">
+            What's your favorite library or Python feature? What AI app are you looking to create next? Please let me know below!
+          </p>
+        </section>
+      </div>
+    )
   }
+];
+
+// Sort blogs so that pinned: true or featured items are placed at the absolute top of the index list
+export const blogs: BlogPost[] = [
+  ...rawBlogs.filter(b => b.pinned),
+  ...rawBlogs.filter(b => !b.pinned)
 ];

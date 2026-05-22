@@ -297,9 +297,16 @@ export default function Blog() {
                     <div className="w-10 h-10 rounded-full bg-imperial/10 flex items-center justify-center text-imperial">
                       <BookOpen size={18} />
                     </div>
-                    <span className="text-xs font-mono text-white/30 uppercase tracking-widest">
-                      {post.date}
-                    </span>
+                    <div>
+                      {post.pinned && (
+                        <div className="text-[9px] font-mono text-imperial font-black uppercase tracking-widest flex items-center gap-1 mb-0.5 animate-pulse">
+                          📌 PINNED HIGHLIGHT
+                        </div>
+                      )}
+                      <span className="text-xs font-mono text-white/30 uppercase tracking-widest">
+                        {post.date}
+                      </span>
+                    </div>
                   </div>
                   <span className={`px-4 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-gradient-to-r ${post.color} text-white`}>
                     {post.category}
