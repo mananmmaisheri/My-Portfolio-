@@ -21,6 +21,15 @@ export const projects = [
     github: "https://github.com/mananmmaisheri/My-Portfolio-",
     live: "https://my-portfolio-mauve-three-71.vercel.app/",
   },
+  {
+    id: 2,
+    title: "BOAT LIFESTYLE EXECUTIVE DASHBOARD",
+    description: "An interactive, visually stunning executive dashboard built using mock business statistics to simulate BOAT Lifestyle performance metrics. Centered around key visual modules including interactive sales pipelines, revenue tracking charts, regional sales maps, and structured business intelligence KPI summaries.",
+    tech: ["HTML", "CSS", "JavaScript", "ChartJS", "Analytics"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070",
+    github: "https://github.com/mananmmaisheri/BoatDashBoard",
+    live: "https://boat-dash-board-a1st.vercel.app/",
+  },
 ];
 
 export const hackathons = [

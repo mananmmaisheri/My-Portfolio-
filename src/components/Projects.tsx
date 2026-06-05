@@ -4,9 +4,6 @@ import Tilt from 'react-parallax-tilt';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-gsap.registerPlugin(ScrollTrigger);
 
 import { projects } from '../constants';
 
@@ -18,13 +15,13 @@ export default function Projects() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.project-card', 
-        { opacity: 0, y: 50, scale: 0.9 },
+        { opacity: 0, y: 50, scale: 0.95 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
           duration: 1,
-          stagger: 0.2,
+          stagger: 0.25,
           ease: 'power4.out',
           scrollTrigger: {
             trigger: containerRef.current,
@@ -40,7 +37,7 @@ export default function Projects() {
   return (
     <div ref={containerRef} className="relative py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-32 text-center">
+        <div className="mb-24 text-center">
           <h2 className="text-7xl md:text-9xl font-black tracking-tighter text-glow">
             PROJECTS.
           </h2>
@@ -49,88 +46,106 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-          {projects.map((project) => (
-            <Tilt
-              key={project.id}
-              tiltMaxAngleX={5}
-              tiltMaxAngleY={5}
-              perspective={1000}
-              scale={1.05}
-              transitionSpeed={1500}
-              gyroscope={true}
-              className="project-card break-inside-avoid"
-            >
-              <motion.div 
-                whileHover={{ y: -10 }}
-                className="group relative glass-card rounded-[2rem] overflow-hidden transition-all hover:border-imperial/50 hover:shadow-[0_0_50px_rgba(251,54,64,0.2)]"
+        {/* Dynamic, High-impact Asymmetric Grid with Big sizes rhythm */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+          {projects.map((project, index) => {
+            // Asymmetric layout spans to create visually pleasing rhythm
+            const colSpan = index === 0 ? "lg:col-span-7" : "lg:col-span-5";
+            const imageAspect = index === 0 ? "aspect-[16/9]" : "aspect-[16/10]";
+
+            return (
+              <div 
+                key={project.id} 
+                className={`project-card ${colSpan} flex flex-col`}
               >
-                {/* Image Container */}
-                <div className="relative overflow-hidden">
-                  <motion.img
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
-                    referrerPolicy="no-referrer"
-                  />
-                  
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-night/90 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center p-8 backdrop-blur-sm">
-                    <h3 className="text-2xl font-black tracking-tighter text-imperial mb-4">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-white/70 mb-6 font-light leading-relaxed">
-                      {project.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {project.tech.map((t) => (
-                        <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono text-white/50 uppercase tracking-widest">
-                          {t}
-                        </span>
-                      ))}
+                <Tilt
+                  tiltMaxAngleX={4}
+                  tiltMaxAngleY={4}
+                  perspective={1000}
+                  scale={1.02}
+                  transitionSpeed={1200}
+                  gyroscope={true}
+                  className="h-full flex flex-col"
+                >
+                  <motion.div 
+                    whileHover={{ y: -8 }}
+                    className="group relative h-full flex flex-col glass-card rounded-[2.5rem] p-6 md:p-8 overflow-hidden transition-all duration-500 hover:border-imperial/50 hover:shadow-[0_0_50px_rgba(251,54,64,0.15)] bg-white/5 border border-white/10"
+                  >
+                    {/* Image Showcase */}
+                    <div className={`relative ${imageAspect} rounded-[1.8rem] overflow-hidden mb-8 bg-black/40`}>
+                      <motion.img
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none" />
                     </div>
 
-                    <div className="flex items-center gap-6">
-                      <a 
-                        href={project.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white/50 hover:text-imperial transition-colors"
-                      >
-                        <Github size={18} /> GITHUB
-                      </a>
-                      <a 
-                        href={project.live} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white/50 hover:text-imperial transition-colors"
-                      >
-                        <ExternalLink size={18} /> VERCEL
-                      </a>
+                    {/* Content Area */}
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div>
+                        {/* Title & Badge */}
+                        <div className="flex items-center justify-between gap-4 mb-4">
+                          <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-white uppercase group-hover:text-imperial transition-colors duration-300">
+                            {project.title}
+                          </h3>
+                          <span className="text-[10px] font-mono font-bold tracking-widest text-imperial uppercase bg-imperial/10 px-3 py-1 rounded-full border border-imperial/25">
+                            PROJ #{project.id}
+                          </span>
+                        </div>
+
+                        {/* Tech stack */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {project.tech.map((t) => (
+                            <span 
+                              key={t} 
+                              className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono text-white/60 uppercase tracking-widest group-hover:border-white/20 transition-all duration-300"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-sm md:text-base text-white/70 font-light leading-relaxed mb-8">
+                          {project.description}
+                        </p>
+                      </div>
+
+                      {/* Explicit Interactive Action Buttons */}
+                      <div className="pt-6 border-t border-white/5 flex flex-wrap items-center gap-4">
+                        <a 
+                          href={project.github} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex-1 min-w-[120px] flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white/80 hover:text-white px-5 py-3.5 rounded-full border border-white/10 hover:border-white/20 text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+                        >
+                          <Github size={16} className="text-white/70 group-hover:text-imperial transition-colors" /> GITHUB
+                        </a>
+                        <a 
+                          href={project.live} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex-1 min-w-[120px] flex items-center justify-center gap-2 bg-imperial hover:bg-imperial/90 text-white px-5 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest hover:shadow-[0_0_25px_rgba(251,54,64,0.35)] transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+                        >
+                          <ExternalLink size={16} /> VERCEL (LIVE)
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                {/* Default Content (Visible when not hovered) */}
-                <div className="p-6 group-hover:opacity-0 transition-opacity duration-300">
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-xl font-black tracking-tighter">
-                      {project.title}
-                    </h3>
-                    <ArrowUpRight className="text-white/30 group-hover:text-imperial transition-colors" size={20} />
-                  </div>
-                </div>
-
-                {/* Glowing Border Animation */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-imperial/30 rounded-[2rem] transition-all duration-1000 pointer-events-none" />
-              </motion.div>
-            </Tilt>
-          ))}
+                    {/* Glowing highlight border */}
+                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-imperial/20 rounded-[2.5rem] transition-all duration-1000 pointer-events-none" />
+                  </motion.div>
+                </Tilt>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
+
